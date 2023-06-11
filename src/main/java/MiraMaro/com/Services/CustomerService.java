@@ -18,7 +18,7 @@ public class CustomerService {
     CartRepository cp=new CartRepository();
     CustomerRepository cup=new CustomerRepository();
     CartService cartService=new CartService();
-    ProductRepository productRepository=new ProductRepository();
+    ProductRepository productRepository=ProductRepository.getInstance();
 
     public CustomerDTO register(CustomerCreationDTO customerCreationDTO){
         Customer customer=new Customer();

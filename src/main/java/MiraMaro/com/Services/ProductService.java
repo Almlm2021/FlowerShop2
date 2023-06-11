@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ProductService {
 
-    ProductRepository productRepository = new ProductRepository();
+    ProductRepository productRepository = ProductRepository.getInstance();
 
     public ProductDTO UpdateQuantity(int productId, int quantity) {
         Product p = productRepository.findById(productId);

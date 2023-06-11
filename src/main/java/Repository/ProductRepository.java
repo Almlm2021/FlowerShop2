@@ -14,11 +14,20 @@ import java.util.List;
 
 public class ProductRepository {
     private Session session;
+    private static ProductRepository instance;
 
-    public ProductRepository() {
+    private ProductRepository() {
         this.session = DBConfiguration.session;
     }
 
+    public static ProductRepository getInstance()
+    {
+        if(instance==null)
+        {
+            instance=new ProductRepository();
+        }
+        return instance;
+    }
 
     public void save(Product product) {
         Transaction transaction = session.beginTransaction();

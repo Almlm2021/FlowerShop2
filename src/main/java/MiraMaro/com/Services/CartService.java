@@ -16,7 +16,7 @@ public class CartService {
     CartItemRepository cr = new CartItemRepository();
     CartRepository cp = new CartRepository();
     CustomerRepository cup = new CustomerRepository();
-    ProductRepository pp = new ProductRepository();
+    ProductRepository pp = ProductRepository.getInstance();
     ProductService productService = new ProductService();
 
     public void addItemToCart(int productId, int cartId, int quantity) {
