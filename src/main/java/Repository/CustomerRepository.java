@@ -13,10 +13,18 @@ import java.util.List;
 
 public class CustomerRepository {
     private Session session;
+    private static CustomerRepository instance;
 
-    public CustomerRepository() {
+    private CustomerRepository() {
         this.session = DBConfiguration.session;
     }
+    public static CustomerRepository getInstance(){
+        if(instance==null){
+            instance=new CustomerRepository();
+        }
+        return instance;
+    }
+
 
     public void save(Customer customer) {
         Transaction transaction = session.beginTransaction();

@@ -15,11 +15,24 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class CustomerService {
-    CartRepository cp=new CartRepository();
-    CustomerRepository cup=new CustomerRepository();
-    CartService cartService=new CartService();
+    CartRepository cp=CartRepository.getInstance();
+    CustomerRepository cup=CustomerRepository.getInstance();
+    CartService cartService=CartService.getInstance();
     ProductRepository productRepository=ProductRepository.getInstance();
 
+
+    private static CustomerService instance;
+    public static CustomerService getInstance(){
+        if(instance==null){
+            instance=new CustomerService();
+        }
+        return instance;
+    }
+
+
+    private CustomerService(){
+
+    }
     public CustomerDTO register(CustomerCreationDTO customerCreationDTO){
         Customer customer=new Customer();
         customer.setCarts(new ArrayList<Cart>());

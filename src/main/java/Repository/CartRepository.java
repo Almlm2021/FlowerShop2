@@ -13,11 +13,18 @@ import java.util.List;
 
 public class CartRepository {
     private Session session;
+    private static CartRepository instance;
 
-    public CartRepository() {
+    private CartRepository() {
         this.session = DBConfiguration.session;
     }
 
+    public static CartRepository getInstance(){
+        if(instance==null){
+            instance=new CartRepository();
+        }
+        return instance;
+    }
 
     public void save(Cart cart) {
         Transaction transaction = session.beginTransaction();

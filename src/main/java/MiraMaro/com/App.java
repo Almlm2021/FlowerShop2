@@ -25,9 +25,9 @@ import java.util.Map;
 public class App {
     public static void main(String[] args) {
 
-    ProductService productService=new ProductService();
-    CartService cartService=new CartService();
-    CustomerService customerService=new CustomerService();
+    ProductService productService=ProductService.getInstance();
+    CartService cartService=CartService.getInstance();
+    CustomerService customerService=CustomerService.getInstance();
 
     ProductCreationDTO product1 = new ProductCreationDTO("Sunflower", 1.99, "Yellow", "Annual", 50);
     ProductCreationDTO product2 = new ProductCreationDTO("Tulip", 2.75, "Pink", "Perennial", 25);

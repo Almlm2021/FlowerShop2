@@ -14,11 +14,23 @@ import java.util.List;
 
 public class CartService {
     CartItemRepository cr = CartItemRepository.getInstance();
-    CartRepository cp = new CartRepository();
-    CustomerRepository cup = new CustomerRepository();
+    CartRepository cp = CartRepository.getInstance();
+    CustomerRepository cup = CustomerRepository.getInstance();
     ProductRepository pp = ProductRepository.getInstance();
-    ProductService productService = new ProductService();
+    ProductService productService = ProductService.getInstance();
 
+    private static CartService instance;
+    public static CartService getInstance(){
+        if(instance==null){
+            instance=new CartService();
+        }
+        return instance;
+    }
+
+
+    private CartService(){
+
+    }
     public void addItemToCart(int productId, int cartId, int quantity) {
         Cart cart = cp.findById(cartId);
         Product product = pp.findById(productId);

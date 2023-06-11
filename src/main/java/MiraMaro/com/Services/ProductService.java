@@ -4,6 +4,7 @@ import MiraMaro.com.DTO.Mapper;
 import MiraMaro.com.DTO.ProductCreationDTO;
 import MiraMaro.com.DTO.ProductDTO;
 import MiraMaro.com.Entities.Product;
+import Repository.CustomerRepository;
 import Repository.ProductRepository;
 
 import java.util.ArrayList;
@@ -13,7 +14,18 @@ import java.util.List;
 public class ProductService {
 
     ProductRepository productRepository = ProductRepository.getInstance();
+    private static ProductService instance;
+    public static ProductService getInstance(){
+        if(instance==null){
+            instance=new ProductService();
+        }
+        return instance;
+    }
 
+
+    private ProductService(){
+
+    }
     public ProductDTO UpdateQuantity(int productId, int quantity) {
         Product p = productRepository.findById(productId);
         if (p == null) {
