@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartService {
-    CartItemRepository cr = new CartItemRepository();
+    CartItemRepository cr = CartItemRepository.getInstance();
     CartRepository cp = new CartRepository();
     CustomerRepository cup = new CustomerRepository();
     ProductRepository pp = ProductRepository.getInstance();

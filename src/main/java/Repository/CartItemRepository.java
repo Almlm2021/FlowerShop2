@@ -13,9 +13,15 @@ import java.util.List;
 
 public class CartItemRepository {
     private Session session;
-
-    public CartItemRepository() {
+    private static CartItemRepository instance;
+    private CartItemRepository() {
         this.session = DBConfiguration.session;
+    }
+    public static CartItemRepository getInstance(){
+        if(instance==null){
+            instance=new CartItemRepository();
+        }
+        return instance;
     }
 
 
