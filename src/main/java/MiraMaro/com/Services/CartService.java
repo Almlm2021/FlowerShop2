@@ -4,10 +4,10 @@ import MiraMaro.com.DTO.CartDTO;
 import MiraMaro.com.DTO.CartItemDTO;
 import MiraMaro.com.DTO.Mapper;
 import MiraMaro.com.Entities.*;
-import Repository.CartItemRepository;
-import Repository.CartRepository;
-import Repository.CustomerRepository;
-import Repository.ProductRepository;
+import MiraMaro.com.Repository.CartItemRepository;
+import MiraMaro.com.Repository.CartRepository;
+import MiraMaro.com.Repository.CustomerRepository;
+import MiraMaro.com.Repository.ProductRepository;
 
 import java.util.ArrayList;
 import java.util.List;

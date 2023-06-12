@@ -4,11 +4,9 @@ import MiraMaro.com.DTO.Mapper;
 import MiraMaro.com.DTO.ProductCreationDTO;
 import MiraMaro.com.DTO.ProductDTO;
 import MiraMaro.com.Entities.Product;
-import Repository.CustomerRepository;
-import Repository.ProductRepository;
+import MiraMaro.com.Repository.ProductRepository;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class ProductService {

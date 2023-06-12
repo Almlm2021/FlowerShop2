@@ -1,18 +1,16 @@
 package MiraMaro.com.Services;
 
-import MiraMaro.com.DTO.CartDTO;
 import MiraMaro.com.DTO.CustomerCreationDTO;
 import MiraMaro.com.DTO.CustomerDTO;
 import MiraMaro.com.DTO.Mapper;
 import MiraMaro.com.Entities.Cart;
 import MiraMaro.com.Entities.Customer;
 import MiraMaro.com.Entities.Product;
-import Repository.CartRepository;
-import Repository.CustomerRepository;
-import Repository.ProductRepository;
+import MiraMaro.com.Repository.CartRepository;
+import MiraMaro.com.Repository.CustomerRepository;
+import MiraMaro.com.Repository.ProductRepository;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class CustomerService {
     CartRepository cp=CartRepository.getInstance();

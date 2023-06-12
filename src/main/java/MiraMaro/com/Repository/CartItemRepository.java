@@ -1,7 +1,6 @@
-package Repository;
+package MiraMaro.com.Repository;
 
-
-import MiraMaro.com.Entities.Cart;
+import MiraMaro.com.Entities.CartItem;
 import MiraMaro.com.configurations.DBConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,54 +10,52 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
-public class CartRepository {
+public class CartItemRepository {
     private Session session;
-    private static CartRepository instance;
-
-    private CartRepository() {
+    private static CartItemRepository instance;
+    private CartItemRepository() {
         this.session = DBConfiguration.session;
     }
-
-    public static CartRepository getInstance(){
+    public static CartItemRepository getInstance(){
         if(instance==null){
-            instance=new CartRepository();
+            instance=new CartItemRepository();
         }
         return instance;
     }
 
-    public void save(Cart cart) {
+
+    public void save(CartItem cartItem) {
         Transaction transaction = session.beginTransaction();
-        session.save(cart);
+        session.save(cartItem);
         transaction.commit();
 
     }
 
 
-    public Cart findById(int id) {
-        return session.get(Cart.class, id);
+    public CartItem findById(int id) {
+        return session.get(CartItem.class, id);
     }
 
 
-    public List<Cart> findAll() {
+    public List<CartItem> findAll() {
         CriteriaBuilder cb = session.getCriteriaBuilder();
-        CriteriaQuery<Cart> cq = cb.createQuery(Cart.class);
-        cq.from(Cart.class);
-        Query<Cart> query = session.createQuery(cq);
+        CriteriaQuery<CartItem> cq = cb.createQuery(CartItem.class);
+        cq.from(CartItem.class);
+        Query<CartItem> query = session.createQuery(cq);
         return query.getResultList();
     }
 
 
-    public void update(Cart cart) {
+    public void update(CartItem cartItem) {
         Transaction transaction = session.beginTransaction();
-        session.update(cart);
+        session.update(cartItem);
         transaction.commit();
     }
 
 
-    public void delete(Cart cart) {
+    public void delete(CartItem cartItem) {
         Transaction transaction = session.beginTransaction();
-        session.delete(cart);
+        session.delete(cartItem);
         transaction.commit();
     }
 }
-

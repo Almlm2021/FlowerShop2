@@ -1,0 +1,8 @@
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<VBox alignment="CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml">
+    <Label text="Welcome to Our Flower Shop" />
+    <Button text="Customer" onAction="#openCustomerLogin" />
+    <Button text="Owner" onAction="#openOwnerLogin" />
+</VBox>

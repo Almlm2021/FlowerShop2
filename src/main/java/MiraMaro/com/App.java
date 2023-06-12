@@ -5,18 +5,9 @@ import MiraMaro.com.DTO.CustomerCreationDTO;
 import MiraMaro.com.DTO.CustomerDTO;
 import MiraMaro.com.DTO.ProductCreationDTO;
 import MiraMaro.com.DTO.ProductDTO;
-import MiraMaro.com.Entities.CartItem;
-import MiraMaro.com.Entities.Product;
 import MiraMaro.com.Services.CartService;
 import MiraMaro.com.Services.CustomerService;
 import MiraMaro.com.Services.ProductService;
-import Repository.CartItemRepository;
-import Repository.ProductRepository;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
-import java.util.Map;
 
 /**
  * Hello world!

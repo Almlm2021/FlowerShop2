@@ -1,4 +1,4 @@
-package Repository;
+package MiraMaro.com.Repository;
 
 import MiraMaro.com.Entities.Customer;
 import MiraMaro.com.configurations.DBConfiguration;

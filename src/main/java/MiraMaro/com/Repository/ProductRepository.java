@@ -1,6 +1,5 @@
-package Repository;
+package MiraMaro.com.Repository;
 
-import MiraMaro.com.Entities.Customer;
 import MiraMaro.com.Entities.Product;
 import MiraMaro.com.configurations.DBConfiguration;
 import org.hibernate.Session;
@@ -9,7 +8,6 @@ import org.hibernate.query.Query;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class ProductRepository {

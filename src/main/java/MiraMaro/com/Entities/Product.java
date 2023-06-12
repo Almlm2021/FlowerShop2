@@ -32,6 +32,8 @@ public class Product {
         this.name = name;
     }
 
+
+
     /*@Column(name = "name")
     private String name;*/
 
