@@ -10,6 +10,7 @@ import MiraMaro.com.Entities.Product;
 import MiraMaro.com.Services.CartService;
 import MiraMaro.com.Services.CustomerService;
 import MiraMaro.com.Services.ProductService;
+import MiraMaro.com.Services.ShopFacade;
 import Repository.CartItemRepository;
 import Repository.ProductRepository;
 import org.hibernate.Session;
@@ -36,10 +37,12 @@ public class App {
     CustomerCreationDTO customer1 = new CustomerCreationDTO("Maro", "johndoe@example.com", "mypassword123");
     CustomerDTO customerDTO=customerService.register(customer1);
     System.out.println(productService.getAllProduct());
-    cartService.addItemToCart(productDTO.getId(),customerDTO.getCurrentCartId(),3 );
+    //cartService.addItemToCart(productDTO.getId(),customerDTO.getCurrentCartId(),3 );
+        //Nutzen des Fassade Entwurfmuster
+        ShopFacade shopFacade=new ShopFacade();
+        shopFacade.addProductToCart(productDTO.getId(),4,customerDTO.getId());
     cartService.placeOrder(customerDTO.getCurrentCartId(),true);
     customerService.addToFavorite(productDTO1.getId(),customerDTO.getId());
-
     productService.UpdateQuantity(1,10);
     //productService.UpdateQuantity(1,-100);
    /// productService.UpdateQuantity(4,-100);

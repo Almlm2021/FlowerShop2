@@ -26,6 +26,14 @@ public class ProductService {
     private ProductService(){
 
     }
+
+    public ProductDTO finProductById(int id){
+        Product p = productRepository.findById(id);
+        if (p == null) {
+            throw new RuntimeException("product not found");
+        }
+        return Mapper.ProductEntityToDTO(p);
+    }
     public ProductDTO UpdateQuantity(int productId, int quantity) {
         Product p = productRepository.findById(productId);
         if (p == null) {

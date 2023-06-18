@@ -101,6 +101,14 @@ public class CustomerService {
 
     }
 
+    public CustomerDTO findCustomerById(int id){
+        Customer customer=cup.findById(id);
+        if(customer==null){
+            throw new RuntimeException("No customer found!");
+        }
+        return Mapper.customerEntityToDTO(customer);
+    }
+
 
 
 
