@@ -6,21 +6,21 @@ import java.util.List;
 
 @Entity
 @Table(name = "customer")
-public class Customer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+public class Customer extends User {
+    /*   @Id
+      @GeneratedValue(strategy = GenerationType.IDENTITY)
+       @Column(name = "id")
+      private int id;
 
     @Column(nullable=false)
-    private String name;
+      private String name;
 
-    @Column(nullable=false)
-    private String email;
+      @Column(nullable=false)
+      private String email;
 
-    @Column(nullable=false)
-    private String password;
-
+      @Column(nullable=false)
+      private String password;
+  */
     @Column(nullable = false)
     private int currentCartId;
 
@@ -34,22 +34,22 @@ public class Customer {
     )
     private List<Product> favorite;
 
-    public Customer(){}
+    public Customer(){
+        super();
+    }
 
     public Customer( String name, String email, String password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
+       super(name,email,password);
         this.favorite=new ArrayList<Product>();
     }
 
-    public int getId() {
+   /* public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
+    }*/
 
     public int getCurrentCartId() {
         return currentCartId;
@@ -59,7 +59,7 @@ public class Customer {
         this.currentCartId = currentCartId;
     }
 
-    public String getName() {
+   /* public String getName() {
         return name;
     }
 
@@ -82,7 +82,7 @@ public class Customer {
     public void setPassword(String password) {
         this.password = password;
     }
-
+*/
     public List<Cart> getCarts() {
         return carts;
     }
