@@ -1,0 +1,22 @@
+Datenbank erstellen:
+Datenbankname: FlowerShop2
+username: root
+passwort: password
+
+
+
+Jar ausführen:
+
+Über die Eingabeaufforderung in den Ordner ..\FlowerShop2\target wechseln und dann folgenden Befehl eingeben:
+
+java --module-path "..\javafx-sdk-20.0.1\lib" --add-modules javafx.controls,javafx.fxml -jar FlowerShop2-1.0-SNAPSHOT-shaded.jar
+
+In "..\javafx-sdk-20.0.1\lib" den Pfad zur JavaFX lib einfügen (Version 20.0.1)
+
+
+
+
+
+Owner User im Programm:
+username: admin@gmail.com
+passwort: admin123

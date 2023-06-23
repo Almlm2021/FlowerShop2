@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="487.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MiraMaro.com.GUI.EinkaufswagenController">
+   <children>
+      <Label layoutX="222.0" layoutY="14.0" text="Einkaufswagen">
+         <font>
+            <Font name="Geneva" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="68.0" layoutY="68.0" text="Anzahl Produkte:" />
+      <TextField fx:id="tfTotalItems" editable="false" layoutX="68.0" layoutY="93.0" prefHeight="17.0" prefWidth="89.0" />
+      <Label layoutX="211.0" layoutY="68.0" text="Insgesamt:" />
+      <TextField fx:id="tfTotalPrice" editable="false" layoutX="211.0" layoutY="93.0" prefHeight="17.0" prefWidth="89.0" />
+      <TableView fx:id="tblItems" layoutX="68.0" layoutY="157.0"  prefHeight="200.0" prefWidth="479.0">
+        <columns>
+          <TableColumn fx:id="tcID" prefWidth="75.0" text="Produkt ID" />
+          <TableColumn fx:id="tcName" prefWidth="170.0" text="Produkt Name" />
+            <TableColumn fx:id="tcQuantity" prefWidth="104.0" text="Stückzahl" />
+            <TableColumn fx:id="tcPrice" prefWidth="129.0" text="Preis" />
+        </columns>
+      </TableView>
+      <Button layoutX="54.0" layoutY="388.0" mnemonicParsing="false" onAction="#removeFromCart" prefHeight="30.0" prefWidth="157.0" text="Aus Warenkorb entfernen" />
+      <Button layoutX="229.0" layoutY="388.0" mnemonicParsing="false" onAction="#paceOrder" prefHeight="30.0" prefWidth="157.0" text="Bestellen" />
+      <Button layoutX="399.0" layoutY="388.0" mnemonicParsing="false" onAction="#updateQuantity" prefHeight="30.0" prefWidth="157.0" text="Update Stückzahl" />
+      <Button layoutX="510.0" layoutY="447.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="76.0" text="zurück" />
+      <Label layoutX="346.0" layoutY="123.0" text="Stückzahl eingeben:" />
+      <TextField fx:id="tfQuantity" layoutX="458.0" layoutY="119.0" prefHeight="17.0" prefWidth="89.0" />
+   </children>
+</AnchorPane>
