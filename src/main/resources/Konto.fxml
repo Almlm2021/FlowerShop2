@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="466.0" prefWidth="436.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MiraMaro.com.GUI.KontoController">
+   <children>
+      <Pane layoutX="3.0" prefHeight="466.0" prefWidth="468.0">
+         <children>
+            <Label layoutX="94.0" layoutY="37.0" text="Kundendaten aktualisieren">
+               <font>
+                  <Font name="Geneva" size="24.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="tfPassword" layoutX="126.0" layoutY="259.0" prefHeight="37.0" prefWidth="217.0" />
+            <Label layoutX="127.0" layoutY="233.0" text="Passwort:" />
+            <Button fx:id="btnUpdate" layoutX="126.0" layoutY="330.0" mnemonicParsing="false" onAction="#updateCustomer" prefHeight="37.0" prefWidth="217.0" text="Aktualisieren" />
+            <Button layoutX="126.0" layoutY="392.0" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="217.0" text="zurück" />
+            <Label layoutX="126.0" layoutY="97.0" text="User:" />
+            <TextField fx:id="tfUser" layoutX="126.0" layoutY="123.0" prefHeight="37.0" prefWidth="217.0" />
+            <TextField fx:id="tfEmail" layoutX="126.0" layoutY="190.0" prefHeight="37.0" prefWidth="217.0" />
+            <Label layoutX="126.0" layoutY="167.0" text="Email:" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
