@@ -8,6 +8,8 @@ import Repository.CartItemRepository;
 import Repository.CartRepository;
 import Repository.CustomerRepository;
 import Repository.ProductRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +20,9 @@ public class CartService {
     CustomerRepository cup = CustomerRepository.getInstance();
     ProductRepository pp = ProductRepository.getInstance();
     ProductService productService = ProductService.getInstance();
-
+    private static final Logger logger = LogManager.getLogger(CustomerService.class);
     private static CartService instance;
+
     public static CartService getInstance(){
         if(instance==null){
             instance=new CartService();
@@ -29,6 +32,7 @@ public class CartService {
 
 
     private CartService(){
+
 
     }
     public void addItemToCart(int productId, int cartId, int quantity) {
@@ -47,6 +51,7 @@ public class CartService {
         cr.save(cartItem);
         cart.getItems().add(cartItem);
         cp.update(cart);
+        logger.info("a new Item was added to  the Cart"+product.getName());
     }
 
     public void updateQuantity(int cartItemId, int quantity) {
@@ -60,6 +65,8 @@ public class CartService {
         }
         cartItem.setQuantity(quantity + cartItem.getQuantity());
         cr.update(cartItem);
+        logger.info("a cart Items quantity was updated"+cartItem.getCart().getCustomer().getName()+cartItem.getProduct().getName());
+
     }
 
     public void deleteItem(int cartItemId) {
@@ -68,6 +75,8 @@ public class CartService {
             throw new RuntimeException("cartItem not found!");
         }
         cr.delete(cartItem);
+        logger.info("an Item was deleted from the Cart from the customer : "+cartItem.getProduct().getName()+cartItem.getCart().getCustomer().getName());
+
     }
 
     double getTotal(int cartId) {
@@ -128,6 +137,8 @@ public class CartService {
         cart.setBouquet(isBoquete);
         cp.update(cart);
         createCart(cart.getCustomer().getId());
+        logger.info("a new Item was placed to the customer "+cart.getCustomer().getName());
+
     }
 
     public CartDTO createCart(int customerid) {
@@ -144,6 +155,8 @@ public class CartService {
         //update the customer ,that we add a cart to the customer
         cup.update(customer);
         CartDTO cartDTO = Mapper.cartEntityToDTO(cart);
+        logger.info("a new Cart was added to the Customer"+customer.getName());
+
         return cartDTO;
     }
 
@@ -159,6 +172,8 @@ public class CartService {
             productService.UpdateQuantity(product.getId(), +quantity);
         }
         cart.setStatus(CartStatus.CANCELED);
+        logger.info("a Cart was deleted from the Customer"+cart.getCustomer().getName());
+
 
     }
 

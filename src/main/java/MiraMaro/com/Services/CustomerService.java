@@ -10,6 +10,8 @@ import MiraMaro.com.Entities.Product;
 import Repository.CartRepository;
 import Repository.CustomerRepository;
 import Repository.ProductRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -20,7 +22,7 @@ public class CustomerService {
     CartService cartService=CartService.getInstance();
     ProductRepository productRepository=ProductRepository.getInstance();
 
-
+    private static final Logger logger = LogManager.getLogger(CustomerService.class);
     private static CustomerService instance;
     public static CustomerService getInstance(){
         if(instance==null){
@@ -43,6 +45,7 @@ public class CustomerService {
         cup.save(customer);
         //By register a new customer , a new cart will be created and added to this customer
         cartService.createCart(customer.getId());
+        logger.info("New Customer was added "+customer.getName());
         return Mapper.customerEntityToDTO(customer);
 
 
@@ -54,6 +57,8 @@ public class CustomerService {
         }
         customer.setName(name);
         cup.update(customer);
+        logger.info("Customer Name was changed "+customer.getName());
+
     }
     public void changePassword(int customerId,String password){
         Customer customer=cup.findById(customerId);
@@ -62,6 +67,8 @@ public class CustomerService {
         }
         customer.setPassword(password);
         cup.update(customer);
+        logger.info("Customer Password was changed "+customer.getName());
+
     }
 
     public void changeEmail(int customerId,String email){
@@ -71,6 +78,7 @@ public class CustomerService {
         }
         customer.setEmail(email);
         cup.update(customer);
+        logger.info("Customer Email was changed "+customer.getName());
     }
 
 
@@ -83,6 +91,7 @@ public class CustomerService {
                 throw new RuntimeException("Customer password not correct!");
             }
            CustomerDTO customerDTO=Mapper.customerEntityToDTO(customer);
+        logger.info("Customer logged in "+customer.getName());
 
             return customerDTO;
     }
@@ -98,6 +107,7 @@ public class CustomerService {
         }
         customer.getFavorite().add(product);
         cup.update(customer);
+        logger.info("Customer "+customer.getName()+" added a product to Favorite "+product.getName());
 
     }
 
