@@ -2,6 +2,7 @@ package MiraMaro.com.GUI;
 
 
 import MiraMaro.com.DTO.CartDTO;
+import MiraMaro.com.GUI.Utilities;
 import MiraMaro.com.Entities.CartStatus;
 import MiraMaro.com.Services.CartService;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -52,7 +53,8 @@ public class BestellungenController implements Initializable {
 
     @FXML
     private void back(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenProdukte.fxml"));
+        ResourceBundle rb = ResourceBundle.getBundle("messages", Main.getCurrentLocale());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenProdukte.fxml"), rb);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -64,11 +66,14 @@ public class BestellungenController implements Initializable {
     public void tblClick(MouseEvent mouseEvent) {
         CartDTO cartDTO = tblOrder.getSelectionModel().getSelectedItem();
         if (cartDTO == null) return;
-        taDetails.setText("Bestellnummer: " + cartDTO.getId() + "\n" +
-                "Preis: " + cartDTO.getItems().stream().mapToDouble(item -> item.getPrice() * item.getQuantity()).sum() + "\n" +
-                "Status: " + cartDTO.getStatus() + "\n" +
-                "Ist ein Blumenstrauß: " + (cartDTO.isBouquet() ? "ja" : "nein"));
+        double price = cartDTO.getItems().stream().mapToDouble(item -> item.getPrice() * item.getQuantity()).sum();
+        String isBouquetText = cartDTO.isBouquet() ? Utilities.getMessage("ja") : Utilities.getMessage("nein");
+        taDetails.setText(Utilities.getMessage("ornum") + ": " + cartDTO.getId() + "\n" +
+                Utilities.getMessage("preis") + ": " + price + "\n" +
+                Utilities.getMessage("status") + ": " + cartDTO.getStatus() + "\n" +
+                Utilities.getMessage("bouquet") + ": " + isBouquetText);
     }
+
 
 
 }

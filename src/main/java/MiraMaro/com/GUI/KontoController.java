@@ -1,6 +1,8 @@
 package MiraMaro.com.GUI;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
+
 import MiraMaro.com.DTO.CustomerDTO;
 import MiraMaro.com.Services.CustomerService;
 import javafx.event.ActionEvent;
@@ -44,10 +46,11 @@ public class KontoController {
             }
             customerService.changePassword(currentUser.getId(), tfPassword.getText());
 
-            Utilities.showInfo("Erfolgreich", "User wurde erfolgreich geändert");
+            Utilities.showInfo("success", "userupdate");
         } else
-            Utilities.showError("Fehler", "Eingaben ungenügend!");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenProdukte.fxml"));
+            Utilities.showError("error", "iall");
+        ResourceBundle rb = ResourceBundle.getBundle("messages", Main.getCurrentLocale());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenProdukte.fxml"), rb);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -58,13 +61,13 @@ public class KontoController {
 
     private boolean isValid() {
         if (tfUser.getText().isEmpty()) {
-            Utilities.showError("Regestrierung Kunde", "Bitte Namen eingeben");
+            Utilities.showError("cusreg", "iname");
             return false;
         } else if (tfEmail.getText().isEmpty()) {
-            Utilities.showError("Regestrierung Kunde", "Bitte email eingeben");
+            Utilities.showError("cusreg", "iemail");
             return false;
         } else if (tfPassword.getText().isEmpty()) {
-            Utilities.showError("Regestrierung Kunde", "Bitte Passwort eingeben");
+            Utilities.showError("cusreg", "ipasswort");
             return false;
         } else {
             return true;
@@ -74,7 +77,8 @@ public class KontoController {
 
     @FXML
     private void back(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenProdukte.fxml"));
+        ResourceBundle rb = ResourceBundle.getBundle("messages", Main.getCurrentLocale());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenProdukte.fxml"), rb);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = loader.load();
         Scene scene = new Scene(root);

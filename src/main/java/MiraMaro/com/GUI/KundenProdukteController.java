@@ -49,21 +49,22 @@ public class KundenProdukteController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         productService = ProductService.getInstance();
+        List<ProductDTO> products = productService.getAllProduct();
+        ObservableList<ProductDTO> productObservableList = FXCollections.observableArrayList(products);
         tcID.setCellValueFactory(new PropertyValueFactory<ProductDTO, Integer>("id"));
         tcName.setCellValueFactory(new PropertyValueFactory<ProductDTO, String>("name"));
         tcPrice.setCellValueFactory(new PropertyValueFactory<ProductDTO, Double>("price"));
         tcColor.setCellValueFactory(new PropertyValueFactory<ProductDTO, String>("color"));
         tcQuantity.setCellValueFactory(new PropertyValueFactory<ProductDTO, Integer>("quantity"));
         tcType.setCellValueFactory(new PropertyValueFactory<ProductDTO, String>("type"));
-        List<ProductDTO> products = productService.getAllProduct();
-        ObservableList<ProductDTO> productObservableList = FXCollections.observableArrayList(products);
         tcProducts.setItems(productObservableList);
     }
 
 
     @FXML
     private void ausloggen(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenLogin.fxml"));
+        ResourceBundle rb = ResourceBundle.getBundle("messages", Main.getCurrentLocale());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenLogin.fxml"), rb);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -73,7 +74,8 @@ public class KundenProdukteController implements Initializable {
 
     @FXML
     private void goToCart(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Einkaufswagen.fxml"));
+        ResourceBundle rb = ResourceBundle.getBundle("messages", Main.getCurrentLocale());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Einkaufswagen.fxml"), rb);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -83,7 +85,8 @@ public class KundenProdukteController implements Initializable {
 
     @FXML
     private void goToOrders(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Bestellungen.fxml"));
+        ResourceBundle rb = ResourceBundle.getBundle("messages", Main.getCurrentLocale());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Bestellungen.fxml"), rb);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -93,7 +96,8 @@ public class KundenProdukteController implements Initializable {
 
     @FXML
     private void goToKonto(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Konto.fxml"));
+        ResourceBundle rb = ResourceBundle.getBundle("messages", Main.getCurrentLocale());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Konto.fxml"), rb);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -106,18 +110,18 @@ public class KundenProdukteController implements Initializable {
     private void addToCart(ActionEvent event) {
         ProductDTO selectedProduct = tcProducts.getSelectionModel().getSelectedItem();
         if (selectedProduct == null) {
-            Utilities.showError("Fehler", "Bitte wählen Sie ein Produkt aus.");
+            Utilities.showError("error", "prdchoose");
             return;
         } else {
             int quantity = 1;
             if (selectedProduct.getQuantity() < quantity) {
-                Utilities.showError("Fehler", "Nicht genug Produkt auf Lager.");
+                Utilities.showError("error", "noprd");
                 return;
             } else {
                 CartService.getInstance().addItemToCart(selectedProduct.getId(), KundenLoginController.currentUser.getCurrentCartId(), quantity);
                 selectedProduct.setQuantity(selectedProduct.getQuantity() - quantity);
                 tcProducts.refresh();
-                Utilities.getConfirmation("Erfolgreich hinzugefügt!");
+                Utilities.getConfirmation("prdadd");
             }
         }
     }
@@ -129,7 +133,8 @@ public class KundenProdukteController implements Initializable {
 
     @FXML
     private void goToFav(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Favoriten.fxml"));
+        ResourceBundle rb = ResourceBundle.getBundle("messages", Main.getCurrentLocale());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Favoriten.fxml"), rb);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = loader.load();
         Scene scene = new Scene(root);

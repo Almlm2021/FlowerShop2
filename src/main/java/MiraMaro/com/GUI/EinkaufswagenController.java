@@ -70,7 +70,8 @@ public class EinkaufswagenController implements Initializable {
     @FXML
     private void paceOrder(ActionEvent event) throws IOException {
         CartService.getInstance().placeOrder(KundenLoginController.currentUser.getCurrentCartId(), false);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenProdukte.fxml"));
+        ResourceBundle rb = ResourceBundle.getBundle("messages", Main.getCurrentLocale());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenProdukte.fxml"), rb);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -91,7 +92,8 @@ public class EinkaufswagenController implements Initializable {
 
     @FXML
     private void back(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenProdukte.fxml"));
+        ResourceBundle rb = ResourceBundle.getBundle("messages", Main.getCurrentLocale());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenProdukte.fxml"), rb);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = loader.load();
         Scene scene = new Scene(root);

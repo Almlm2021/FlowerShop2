@@ -1,6 +1,8 @@
 package MiraMaro.com.GUI;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
+
 import MiraMaro.com.DTO.CustomerCreationDTO;
 import MiraMaro.com.DTO.CustomerDTO;
 import MiraMaro.com.Services.CustomerService;
@@ -45,16 +47,17 @@ public class KundenRegistrierungController {
         CustomerDTO newCustomer = customerService.register(customerCreationDTO);
 
         if (customerRepository.findById(newCustomer.getId()) == null) {
-        	Utilities.showError("Fehler", "User nicht erstellt");
+        	Utilities.showError("error", "usnotcreated");
             return;
         }
-    	Utilities.showInfo("Erfolgreich", "User wurde erfolgreich erstellt");
+    	Utilities.showInfo("success", "usercreated");
 
         tfUser.clear();
         tfEmail.clear();
         tfPassword.clear();
     	}
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenLogin.fxml"));
+        ResourceBundle rb = ResourceBundle.getBundle("messages", Main.getCurrentLocale());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenLogin.fxml"), rb);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -66,13 +69,13 @@ public class KundenRegistrierungController {
 
     private boolean isValid() {
         if (tfUser.getText().isEmpty()) {
-            Utilities.showError("Regestrierung Kunde", "Bitte Namen eingeben");
+            Utilities.showError("cusreg", "iname");
             return false;
         } else if (tfEmail.getText().isEmpty()) {
-            Utilities.showError("Regestrierung Kunde", "Bitte email eingeben");
+            Utilities.showError("cusreg", "iemail");
             return false;
         } else if (tfPassword.getText().isEmpty()) {
-            Utilities.showError("Regestrierung Kunde", "Bitte Passwort eingeben");
+            Utilities.showError("cusreg", "ipasswort");
             return false;
         } else {
             return true;
@@ -82,7 +85,8 @@ public class KundenRegistrierungController {
     
     @FXML
     private void back(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenLogin.fxml"));
+        ResourceBundle rb = ResourceBundle.getBundle("messages", Main.getCurrentLocale());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/KundenLogin.fxml"), rb);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = loader.load();
         Scene scene = new Scene(root);

@@ -1,6 +1,8 @@
 package MiraMaro.com.GUI;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,24 +33,24 @@ public class OwnerLoginController {
         String email = tcEmail.getText();
         String password = tcPassword.getText();
         if(Admin.DEFAULT_ADMIN.getEmail().equals(email) && Admin.DEFAULT_ADMIN.getPassword().equals(password)) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/OwnerMenu.fxml"));
+            ResourceBundle rb = ResourceBundle.getBundle("messages", Main.getCurrentLocale());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/OwnerMenu.fxml"), rb);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         } else {
-            Utilities.showError("Fehler!", "Email oder Passwort inkorrekt!");
+            Utilities.showError("error", "empwincorrect");
         }
     }
 
 
 
-
-
     @FXML
     private void back(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/startscreen.fxml"));
+        ResourceBundle rb = ResourceBundle.getBundle("messages", Main.getCurrentLocale());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/startscreen.fxml"), rb);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = loader.load();
         Scene scene = new Scene(root);

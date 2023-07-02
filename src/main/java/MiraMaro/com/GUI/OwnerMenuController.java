@@ -75,13 +75,14 @@ public class OwnerMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         productService = ProductService.getInstance();
         List<ProductDTO> products = productService.getAllProduct();
+        tblProducts.setItems(FXCollections.observableArrayList(products));
         tcID.setCellValueFactory(new PropertyValueFactory<>("id"));
         tcName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tcPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         tcColor.setCellValueFactory(new PropertyValueFactory<>("color"));
         tcQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         tcType.setCellValueFactory(new PropertyValueFactory<>("type"));
-        tblProducts.setItems(FXCollections.observableArrayList(products));
+
     }
 
     @FXML
@@ -95,11 +96,11 @@ public class OwnerMenuController implements Initializable {
             product.setQuantity(Integer.parseInt(tfQuantity.getText()));
             productService.addProduct(product);
             clearFields();
-            Utilities.showInfo("Erfolg", "Produkt wurde hinzugefügt!");
+            Utilities.showInfo("success", "prdadd");
             initialize(null, null);
             return;
         }
-        Utilities.showError("Fehler", "Produkt konnte nicht hinzugefügt werden!");
+        Utilities.showError("error", "prdnotadd");
     }
 
 
@@ -107,20 +108,22 @@ public class OwnerMenuController implements Initializable {
     private void actionDelete(ActionEvent event) {
         ProductDTO product = tblProducts.getSelectionModel().getSelectedItem();
         if (product == null) {
-            Utilities.showError("Fehler", "Bitte wählen Sie ein Produkt aus!");
+            Utilities.showError("error", "prdchoose");
             return;
         }
         productService.deleteProduct(product.getId());
         initialize(null, null);
         clearFields();
-        Utilities.showInfo("Erfolg", "Produkt wurde gelöscht!");
+        Utilities.showInfo("success", "prddelete");
     }
+
+
 
     @FXML
     private void actionUpdate(ActionEvent event) {
         ProductDTO product = tblProducts.getSelectionModel().getSelectedItem();
         if (product == null) {
-            Utilities.showError("Fehler", "Bitte wählen Sie ein Produkt aus!");
+            Utilities.showError("error", "prdchoose");
             return;
         }
         ProductCreationDTO productUpdate = new ProductCreationDTO();
@@ -132,7 +135,7 @@ public class OwnerMenuController implements Initializable {
         productService.updateProduct(product.getId(), productUpdate);
         initialize(null, null);
         clearFields();
-        Utilities.showInfo("Erfolg", "Produkt wurde aktualisiert!");
+        Utilities.showInfo("success", "prdupdate");
     }
 
     @FXML
@@ -151,7 +154,8 @@ public class OwnerMenuController implements Initializable {
 
     @FXML
     private void actionBack(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/OwnerLogin.fxml"));
+        ResourceBundle rb = ResourceBundle.getBundle("messages", Main.getCurrentLocale());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/OwnerLogin.fxml"), rb);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene((Parent) loader.load());
         stage.setScene(scene);
@@ -160,31 +164,31 @@ public class OwnerMenuController implements Initializable {
 
     private boolean validation() {
         if (tfName.getText().isEmpty()) {
-            Utilities.showError("Produkt Management", "Bitte Namen eingeben!");
+            Utilities.showError("prdmanage", "iname");
             return false;
         } else if (tfPrice.getText().isEmpty()) {
-            Utilities.showError("Produkt Management", "Bitte Preis eingeben!");
+            Utilities.showError("prdmanage", "iprice");
             return false;
         } else if (tfQuantity.getText().isEmpty()) {
-            Utilities.showError("Produkt Management", "Bitte Stückzahl eingeben!");
+            Utilities.showError("prdmanage", "iquantitiy");
             return false;
         } else if (tfColor.getText().isEmpty()) {
-            Utilities.showError("Produkt Management", "Bitte Farbe eingeben!");
+            Utilities.showError("prdmanage", "icolor");
             return false;
         } else if (tfType.getText().isEmpty()) {
-            Utilities.showError("Produkt Management", "Bitte Type eingeben!");
+            Utilities.showError("prdmanage", "itype");
             return false;
         } else if (!tfPrice.getText().matches("^[0-9]*\\.?[0-9]+$")) {
-            Utilities.showError("Produkt Management", "Ungültiger Preis!");
+            Utilities.showError("prdmanage", "uprice");
             return false;
         } else if (!tfQuantity.getText().matches("\\d+")) {
-            Utilities.showError("Produkt Management", "Ungültige Stückzahl!");
+            Utilities.showError("prdmanage", "uquantity");
             return false;
         } else if (tfPrice.getText().matches("^[0-9]*\\.?[0-9]+$") && Double.parseDouble(tfPrice.getText()) <= 0) {
-            Utilities.showError("Produkt Management", "Ungültiger Preis!");
+            Utilities.showError("prdmanage", "uprice");
             return false;
         } else if (tfQuantity.getText().matches("\\d+") && Integer.parseInt(tfQuantity.getText()) < 1) {
-            Utilities.showError("Produkt Management", "Ungültige Stückzahl!");
+            Utilities.showError("prdmanage", "uquantity");
             return false;
         }
         return true;
