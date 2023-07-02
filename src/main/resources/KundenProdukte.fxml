@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="609.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MiraMaro.com.GUI.KundenProdukteController">
    <children>
-      <Label layoutX="300.0" layoutY="33.0" text="FlowerShop Produkte">
+      <Label layoutX="300.0" layoutY="33.0" text="%kptitel">
          <font>
             <Font size="24.0" />
          </font>
@@ -21,29 +21,29 @@
       <TableView fx:id="tcProducts" layoutX="86.0" layoutY="127.0" prefHeight="295.0" prefWidth="638.0">
         <columns>
           <TableColumn fx:id="tcID" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="tcName" prefWidth="158.0" text="Name" />
-            <TableColumn fx:id="tcPrice" prefWidth="94.0" text="Preis" />
-            <TableColumn fx:id="tcColor" prefWidth="112.0" text="Farbe" />
-            <TableColumn fx:id="tcQuantity" prefWidth="84.0" text="Anzahl" />
+          <TableColumn fx:id="tcName" prefWidth="158.0" text="%name" />
+            <TableColumn fx:id="tcPrice" prefWidth="94.0" text="%preis" />
+            <TableColumn fx:id="tcColor" prefWidth="112.0" text="%farbe" />
+            <TableColumn fx:id="tcQuantity" prefWidth="84.0" text="%stueckzahl" />
             <TableColumn fx:id="tcType" prefWidth="114.0" text="Type" />
         </columns>
       </TableView>
-      <Button layoutX="568.0" layoutY="524.0" mnemonicParsing="false" onAction="#ausloggen" prefHeight="40.0" prefWidth="156.0" text="Ausloggen" />
-      <Button layoutX="88.0" layoutY="452.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="40.0" prefWidth="188.0" text="zum Einkauswagen hinzufügen" />
-      <RadioButton fx:id="rbColor" layoutX="182.0" layoutY="98.0" mnemonicParsing="false" onAction="#colorSort" text="Farbe">
+      <Button layoutX="568.0" layoutY="524.0" mnemonicParsing="false" onAction="#ausloggen" prefHeight="40.0" prefWidth="156.0" text="%logout" />
+      <Button layoutX="88.0" layoutY="452.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="40.0" prefWidth="188.0" text="%tocart" />
+      <RadioButton fx:id="rbColor" layoutX="182.0" layoutY="98.0" mnemonicParsing="false" onAction="#colorSort" text="%sortcolor">
          <toggleGroup>
             <ToggleGroup fx:id="tgSort" />
          </toggleGroup></RadioButton>
-      <RadioButton fx:id="rbPrice" layoutX="260.0" layoutY="98.0" mnemonicParsing="false" onAction="#priceSort" text="Preis" toggleGroup="$tgSort" />
+      <RadioButton fx:id="rbPrice" layoutX="260.0" layoutY="98.0" mnemonicParsing="false" onAction="#priceSort" text="%sortpreis" toggleGroup="$tgSort" />
       <RadioButton fx:id="rbType" layoutX="333.0" layoutY="98.0" mnemonicParsing="false" onAction="#typeSort" text="Type" toggleGroup="$tgSort" />
       <Label layoutX="86.0" layoutY="98.0" text="Sortieren:" />
-      <Button layoutX="88.0" layoutY="524.0" mnemonicParsing="false" onAction="#goToCart" prefHeight="40.0" prefWidth="188.0" text="zum Einkaufswagen" />
-      <Button layoutX="311.0" layoutY="524.0" mnemonicParsing="false" onAction="#goToOrders" prefHeight="40.0" prefWidth="188.0" text="zu meinen Bestellungen" />
+      <Button layoutX="88.0" layoutY="524.0" mnemonicParsing="false" onAction="#goToCart" prefHeight="40.0" prefWidth="188.0" text="%gocart" />
+      <Button layoutX="311.0" layoutY="524.0" mnemonicParsing="false" onAction="#goToOrders" prefHeight="40.0" prefWidth="188.0" text="%goorders" />
       <TextField fx:id="tfID" layoutX="553.0" layoutY="94.0" prefHeight="26.0" prefWidth="82.0" />
-      <Text layoutX="457.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Suchen nach ID:" />
-      <Button layoutX="648.0" layoutY="94.0" mnemonicParsing="false" onAction="#findID" prefHeight="26.0" prefWidth="75.0" text="Suchen" />
-      <Button layoutX="311.0" layoutY="452.0" mnemonicParsing="false" onAction="#addToFav" prefHeight="40.0" prefWidth="188.0" text="zu Favoriten hinzufügen" />
-      <Button layoutX="541.0" layoutY="452.0" mnemonicParsing="false" onAction="#goToFav" prefHeight="40.0" prefWidth="188.0" text="zu meinen Favoriten" />
-      <Button layoutX="86.0" layoutY="31.0" mnemonicParsing="false" onAction="#goToKonto" prefHeight="40.0" prefWidth="85.0" text="mein Konto" />
+      <Text layoutX="457.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%searchid" />
+      <Button layoutX="648.0" layoutY="94.0" mnemonicParsing="false" onAction="#findID" prefHeight="26.0" prefWidth="75.0" text="%search" />
+      <Button layoutX="311.0" layoutY="452.0" mnemonicParsing="false" onAction="#addToFav" prefHeight="40.0" prefWidth="188.0" text="%addFav" />
+      <Button layoutX="541.0" layoutY="452.0" mnemonicParsing="false" onAction="#goToFav" prefHeight="40.0" prefWidth="188.0" text="%gofav" />
+      <Button layoutX="86.0" layoutY="31.0" mnemonicParsing="false" onAction="#goToKonto" prefHeight="40.0" prefWidth="85.0" text="%tokonto" />
    </children>
 </AnchorPane>

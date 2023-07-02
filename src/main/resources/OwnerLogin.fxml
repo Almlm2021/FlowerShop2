@@ -12,14 +12,14 @@
    <children>
       <Pane layoutX="3.0" prefHeight="466.0" prefWidth="468.0">
          <children>
-            <Label layoutX="129.0" layoutY="41.0" text="Willkommen Owner">
+            <Label layoutX="195.0" layoutY="48.0" text="%oltitel">
                <font>
                   <Font name="Geneva" size="24.0" />
                </font>
             </Label>
             <PasswordField fx:id="tcPassword" layoutX="126.0" layoutY="196.0" prefHeight="37.0" prefWidth="217.0" />
-            <Label layoutX="126.0" layoutY="172.0" text="Passwort:" />
-            <Button fx:id="btnBack" layoutX="126.0" layoutY="330.0" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="217.0" text="zurück" />
+            <Label layoutX="126.0" layoutY="172.0" text="%password" />
+            <Button fx:id="btnBack" layoutX="126.0" layoutY="330.0" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="217.0" text="%back" />
             <Button fx:id="btnLogin" layoutX="125.0" layoutY="262.0" mnemonicParsing="false" onAction="#login" prefHeight="37.0" prefWidth="217.0" text="Login" />
             <TextField fx:id="tcEmail" layoutX="125.0" layoutY="125.0" prefHeight="37.0" prefWidth="217.0" />
             <Label layoutX="126.0" layoutY="97.0" text="Email:" />

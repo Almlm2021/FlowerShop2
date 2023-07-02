@@ -10,14 +10,16 @@
    <children>
       <Pane layoutX="3.0" prefHeight="466.0" prefWidth="468.0">
          <children>
-            <Label layoutX="73.0" layoutY="32.0" text="Willkommen zum FlowerShop!">
+            <Label layoutX="83.0" layoutY="71.0" text="%welcome">
                <font>
                   <Font name="Geneva" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="btnowner" layoutX="126.0" layoutY="196.0" mnemonicParsing="false" onAction="#ownerlogin" prefHeight="37.0" prefWidth="217.0" text="Owner Login" />
-            <Button fx:id="btnKunde" layoutX="126.0" layoutY="127.0" mnemonicParsing="false" onAction="#kundenlogin" prefHeight="37.0" prefWidth="217.0" text="Kunden Login" />
-            <Button fx:id="btnExit" layoutX="126.0" layoutY="392.0" mnemonicParsing="false" onAction="#exit" prefHeight="37.0" prefWidth="217.0" text="Exit" />
+            <Button fx:id="btnowner" layoutX="126.0" layoutY="215.0" mnemonicParsing="false" onAction="#ownerlogin" prefHeight="37.0" prefWidth="217.0" text="%owner" />
+            <Button fx:id="btnKunde" layoutX="126.0" layoutY="146.0" mnemonicParsing="false" onAction="#kundenlogin" prefHeight="37.0" prefWidth="217.0" text="%customer" />
+            <Button fx:id="btnExit" layoutX="126.0" layoutY="348.0" mnemonicParsing="false" onAction="#exit" prefHeight="37.0" prefWidth="217.0" text="%exit" />
+            <Button fx:id="btndeutsch" layoutX="310.0" layoutY="27.0" mnemonicParsing="false" onAction="#todeutsch" prefHeight="25.0" prefWidth="66.0" text="Deutsch" />
+            <Button fx:id="btnenglish" layoutX="388.0" layoutY="27.0" mnemonicParsing="false" onAction="#toenglish" prefHeight="25.0" prefWidth="66.0" text="English" />
          </children>
       </Pane>
    </children>
